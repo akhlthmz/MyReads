@@ -29,12 +29,26 @@ class BooksApp extends React.Component {
     console.log(this.state.books);
   };
   render() {
+    const books = this.state.books;
+    const CRbooks = [];
+    const Rbooks = [];
+    const WTRbooks = [];
+    books.forEach((book) => {
+      if (book.shelf === "currentlyReading") {
+        CRbooks.push(book);
+      } else if (book.shelf === "read") {
+        Rbooks.push(book);
+      } else {
+        WTRbooks.push(book);
+      }
+    });
+
     return (
       <div>
         <h1>MyReads</h1>
-        <CurrentlyReading toUpdate={this.toUpdate} books={this.state.books} />
-        <Read books={this.state.books} />
-        <WTRead books={this.state.books} />
+        <CurrentlyReading toUpdate={this.toUpdate} books={CRbooks} />
+        <Read books={Rbooks} />
+        <WTRead books={WTRbooks} />
         <Link to="/search">Search</Link>
       </div>
     );

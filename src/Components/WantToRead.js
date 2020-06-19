@@ -20,26 +20,24 @@ class WTRead extends Component {
       <div>
         <h1>Want To Read</h1>
         <ul>
-          {books
-            .filter((book) => book.shelf === "wantToRead")
-            .map((filteredBook) => (
-              <li key={filteredBook.id}>
-                {filteredBook.title}
+          {books.map((book) => (
+            <li key={book.id}>
+              {book.title}
 
-                <select
-                  value={filteredBook.shelf}
-                  onChange={(e) => this.onchange(e, filteredBook)}
-                >
-                  <option value="move" disabled>
-                    Move to...
-                  </option>
-                  <option value="currentlyReading">Currently Reading</option>
-                  <option value="wantToRead">Want to Read</option>
-                  <option value="read">Read</option>
-                  <option value="none">None</option>
-                </select>
-              </li>
-            ))}
+              <select
+                value={book.shelf}
+                onChange={(e) => this.onchange(e, book)}
+              >
+                <option value="move" disabled>
+                  Move to...
+                </option>
+                <option value="currentlyReading">Currently Reading</option>
+                <option value="wantToRead">Want to Read</option>
+                <option value="read">Read</option>
+                <option value="none">None</option>
+              </select>
+            </li>
+          ))}
         </ul>
       </div>
     );
