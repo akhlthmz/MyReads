@@ -7,10 +7,9 @@ class WTRead extends Component {
     selectedValue: "Move To",
   };
   onchange = (e, book) => {
-    this.setState({
-      selectedValue: e.target.value,
-    });
-    update(book, e.target.value);
+    e.persist();
+    this.setState({ selectedValue: e.target.value });
+    this.props.toUpdate(book, e.target.value);
   };
 
   render() {

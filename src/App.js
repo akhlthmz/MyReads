@@ -20,14 +20,16 @@ class BooksApp extends React.Component {
   }
 
   toUpdate = (changedBook, shelf) => {
-    update(changedBook, shelf).then((res) => (changedBook.shelf = shelf));
-    this.setState = (previousState) => ({
-      books: previousState.books
-        .filter((book) => book.id !== changedBook.id)
-        .concat(changedBook),
+    update(changedBook, shelf).then((res) => {
+      changedBook.shelf = shelf;
+      this.setState = (previousState) => ({
+        books: previousState.books
+          .filter((book) => book.id !== changedBook.id)
+          .concat(changedBook),
+      });
     });
-    console.log(this.state.books);
   };
+
   render() {
     const books = this.state.books;
     const CRbooks = [];
@@ -47,8 +49,8 @@ class BooksApp extends React.Component {
       <div>
         <h1>MyReads</h1>
         <CurrentlyReading toUpdate={this.toUpdate} books={CRbooks} />
-        <Read books={Rbooks} />
-        <WTRead books={WTRbooks} />
+        <Read toUpdate={this.toUpdate} books={Rbooks} />
+        <WTRead toUpdate={this.toUpdate} books={WTRbooks} />
         <Link to="/search">Search</Link>
       </div>
     );
