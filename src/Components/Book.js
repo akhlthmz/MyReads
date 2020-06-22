@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { update } from "../BooksAPI";
 
-class Read extends Component {
+class Book extends Component {
   state = {
     selectedValue: "",
   };
@@ -11,17 +9,22 @@ class Read extends Component {
     this.setState({ selectedValue: e.target.value });
     this.props.toUpdate(book, e.target.value);
   };
-
   render() {
-    const { books } = this.props;
+    const { book } = this.props;
     return (
-      <div>
-        <h1>Read</h1>
-        <ul>
-          {books.map((book) => (
-            <li key={book.id}>
-              {book.title}
-
+      <li key={book.id}>
+        <div className="book">
+          <div className="book-top">
+            <div
+              className="book-cover"
+              style={{
+                width: 128,
+                height: 192,
+                backgroundImage: `url(${book.imageLinks &&
+                  book.imageLinks.thumbnail})`,
+              }}
+            />
+            <div className="book-shelf-changer">
               <select
                 value={book.shelf}
                 onChange={(e) => this.onchange(e, book)}
@@ -34,14 +37,13 @@ class Read extends Component {
                 <option value="read">Read</option>
                 <option value="none">None</option>
               </select>
-            </li>
-          ))}
-        </ul>
-      </div>
+            </div>
+          </div>
+          <div className="book-title">{book.title}</div>
+          <div className="book-authors">{book.authors}</div>
+        </div>
+      </li>
     );
   }
 }
-Read.propTypes = {
-  books: PropTypes.array.isRequired,
-};
-export default Read;
+export default Book;
