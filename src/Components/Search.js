@@ -33,7 +33,7 @@ class Search extends Component {
         {Array.isArray(this.state.searchResult) ? (
           <ul className="books-grid">
             {this.state.searchResult.map((book) => (
-              <Book book={book} key={book.id} />
+              <Book book={book} key={book.id} toUpdate={this.props.toUpdate} />
             ))}
           </ul>
         ) : (
