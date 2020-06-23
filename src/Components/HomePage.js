@@ -13,7 +13,7 @@ function HomePage(props) {
       CRbooks.push(book);
     } else if (book.shelf === "read") {
       Rbooks.push(book);
-    } else {
+    } else if (book.shelf === "wantToRead") {
       WTRbooks.push(book);
     }
   });

@@ -5,9 +5,9 @@ class Book extends Component {
     selectedValue: "",
   };
   onchange = (e, book) => {
-    e.persist();
-    this.setState({ selectedValue: e.target.value });
-    this.props.toUpdate(book, e.target.value);
+    const shelf = e.target.value;
+    this.setState({ selectedValue: shelf });
+    this.props.toUpdate(book, shelf);
   };
   render() {
     const { book } = this.props;

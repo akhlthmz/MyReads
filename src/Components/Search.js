@@ -20,8 +20,13 @@ class Search extends Component {
   render() {
     console.log(this.state.searchResult);
     return (
-      <div>
-        <h3>Add a book</h3>
+      <div className="list-books">
+        <div className="list-books-title">
+          <h1>MyReads</h1>
+        </div>
+        <div>
+          <h3>Search books here</h3>
+        </div>
         <div>
           <input
             type="text"
