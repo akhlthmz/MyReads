@@ -18,36 +18,38 @@ function HomePage(props) {
     }
   });
   return (
-    <div className="list-books">
-      <div className="list-books-title">
-        <h1>MyReads</h1>
-      </div>
+    <div className="app">
+      <div className="list-books">
+        <div className="list-books-title">
+          <h1>MyReads</h1>
+        </div>
 
-      <div className="list-books-content">
-        <BooksList
-          booksSet="Currently Reading"
-          toUpdate={props.toUpdate}
-          defaultValue="currentlyReading"
-          books={CRbooks}
-        />
-        <BooksList
-          booksSet="Want To Read"
-          toUpdate={props.toUpdate}
-          defaultValue="wantToRead"
-          books={WTRbooks}
-        />
+        <div className="list-books-content">
+          <BooksList
+            booksSet="Currently Reading"
+            toUpdate={props.toUpdate}
+            defaultValue="currentlyReading"
+            books={CRbooks}
+          />
+          <BooksList
+            booksSet="Want To Read"
+            toUpdate={props.toUpdate}
+            defaultValue="wantToRead"
+            books={WTRbooks}
+          />
 
-        <BooksList
-          booksSet="Read"
-          toUpdate={props.toUpdate}
-          defaultValue="read"
-          books={Rbooks}
-        />
-      </div>
-      <div className="open-search">
-        <Link to="/search">
-          <button />
-        </Link>
+          <BooksList
+            booksSet="Read"
+            toUpdate={props.toUpdate}
+            defaultValue="read"
+            books={Rbooks}
+          />
+        </div>
+        <div className="open-search">
+          <Link to="/search">
+            <button />
+          </Link>
+        </div>
       </div>
     </div>
   );
