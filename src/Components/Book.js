@@ -11,17 +11,7 @@ class Book extends Component {
   };
   render() {
     const { book } = this.props;
-    // let defaultValue;
 
-    // if (book.shelf === "currentlyReading") {
-    //   defaultValue = "currentlyReading";
-    // } else if (book.shelf === "read") {
-    //   defaultValue = "read";
-    // } else if (book.shelf === "wantToRead") {
-    //   defaultValue = "wantToRead";
-    // } else {
-    //   defaultValue = "none";
-    // }
     return (
       <li key={book.id}>
         <div className="book">

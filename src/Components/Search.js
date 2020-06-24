@@ -13,13 +13,19 @@ class Search extends Component {
     this.setState({
       query: value.trim(),
     });
-    search(this.state.query).then((res) =>
-      this.setState({
-        searchResult: res,
-      })
-    );
+    if (this.state.query !== "") {
+      search(this.state.query).then((res) =>
+        this.setState({
+          searchResult: res,
+        })
+      );
+    } else {
+      this.setState({ searchResult: [] });
+    }
   };
+
   render() {
+    console.log(this.state.searchResult);
     let SearchedBooks = this.state.searchResult;
     let HomePageBooks = this.props.books;
     let shelf;
@@ -34,7 +40,7 @@ class Search extends Component {
         book.shelf = shelf;
       });
     }
-    console.log(SearchedBooks);
+    console.log(this.state.query);
 
     return (
       <div className="app">
