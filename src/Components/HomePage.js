@@ -27,13 +27,21 @@ function HomePage(props) {
         <BooksList
           booksSet="Currently Reading"
           toUpdate={props.toUpdate}
+          defaultValue="currentlyReading"
           books={CRbooks}
         />
-        <BooksList booksSet="Read" toUpdate={props.toUpdate} books={Rbooks} />
         <BooksList
           booksSet="Want To Read"
           toUpdate={props.toUpdate}
+          defaultValue="wantToRead"
           books={WTRbooks}
+        />
+
+        <BooksList
+          booksSet="Read"
+          toUpdate={props.toUpdate}
+          defaultValue="read"
+          books={Rbooks}
         />
       </div>
       <div className="open-search">

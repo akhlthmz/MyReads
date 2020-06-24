@@ -10,7 +10,12 @@ function BooksList(props) {
       <div className="bookshelf-books">
         <ul className="books-grid">
           {books.map((book) => (
-            <Book book={book} key={book.id} toUpdate={props.toUpdate} />
+            <Book
+              book={book}
+              key={book.id}
+              toUpdate={props.toUpdate}
+              defaultValue={props.defaultValue}
+            />
           ))}
         </ul>
       </div>

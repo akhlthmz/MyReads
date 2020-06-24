@@ -7,6 +7,7 @@ class Search extends Component {
     query: "",
     searchResult: [],
   };
+
   onchange = (value) => {
     this.setState({
       query: value.trim(),
@@ -18,7 +19,20 @@ class Search extends Component {
     );
   };
   render() {
-    console.log(this.state.searchResult);
+    let MpArrey = this.props.books;
+    // arrey from mainpage
+    let SArrey = this.state.searchResult;
+    // arrey from search
+    let res;
+
+    if (Array.isArray(SArrey)) {
+      res = SArrey.filter((book) => MpArrey.includes(book));
+      console.log(res);
+    } else {
+      console.log("not working");
+    }
+
+    // console.log(this.state.searchResult);
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -38,7 +52,12 @@ class Search extends Component {
         {Array.isArray(this.state.searchResult) ? (
           <ul className="books-grid">
             {this.state.searchResult.map((book) => (
-              <Book book={book} key={book.id} toUpdate={this.props.toUpdate} />
+              <Book
+                book={book}
+                key={book.id}
+                toUpdate={this.props.toUpdate}
+                defaultValue="none"
+              />
             ))}
           </ul>
         ) : (
