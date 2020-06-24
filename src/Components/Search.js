@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
 import { search } from "../BooksAPI";
 import Book from "./Book";
 
@@ -13,8 +15,8 @@ class Search extends Component {
     this.setState({
       query: value.trim(),
     });
-    if (this.state.query !== "") {
-      search(this.state.query).then((res) =>
+    if (value !== "") {
+      search(value.trim()).then((res) =>
         this.setState({
           searchResult: res,
         })
@@ -25,14 +27,15 @@ class Search extends Component {
   };
 
   render() {
-    console.log(this.state.searchResult);
+    // console.log(this.state.searchResult);
+
     let SearchedBooks = this.state.searchResult;
     let HomePageBooks = this.props.books;
     let shelf;
     if (Array.isArray(SearchedBooks)) {
-      SearchedBooks.map((book) => {
+      SearchedBooks.forEach((book) => {
         shelf = "none";
-        HomePageBooks.map((HpBook) => {
+        HomePageBooks.forEach((HpBook) => {
           if (book.id === HpBook.id) {
             shelf = HpBook.shelf;
           }
@@ -40,14 +43,14 @@ class Search extends Component {
         book.shelf = shelf;
       });
     }
-    console.log(this.state.query);
+    // console.log(this.state.query);
 
     return (
       <div className="app">
-        <div className="list-books-title">
-          <h1>MyReads</h1>
-        </div>
         <div className="list-books">
+          <div className="list-books-title">
+            <h1>MyReads</h1>
+          </div>
           <div className="search-books">
             <div className="search-books-bar">
               <Link to="/">
@@ -56,6 +59,7 @@ class Search extends Component {
               <div className="search-books-input-wrapper">
                 <input
                   type="text"
+                  autoFocus
                   placeholder="Search books here"
                   value={this.state.query}
                   onChange={(e) => this.onchange(e.target.value)}
@@ -85,4 +89,9 @@ class Search extends Component {
     );
   }
 }
+
+Search.propTypes = {
+  books: PropTypes.array.isRequired,
+  toUpdate: PropTypes.func.isRequired,
+};
 export default Search;

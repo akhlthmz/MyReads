@@ -24,5 +24,8 @@ function BooksList(props) {
 }
 BooksList.propTypes = {
   books: PropTypes.array.isRequired,
+  booksSet: PropTypes.string.isRequired,
+  defaultValue: PropTypes.string,
+  toUpdate: PropTypes.func.isRequired,
 };
 export default BooksList;

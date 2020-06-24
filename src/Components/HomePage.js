@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import BooksList from "./BooksList";
 
@@ -54,4 +55,8 @@ function HomePage(props) {
     </div>
   );
 }
+HomePage.propTypes = {
+  books: PropTypes.array.isRequired,
+  toUpdate: PropTypes.func.isRequired,
+};
 export default HomePage;

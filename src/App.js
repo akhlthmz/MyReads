@@ -14,7 +14,7 @@ class BooksApp extends React.Component {
   componentDidMount() {
     getAll().then((data) => {
       this.setState({ books: data });
-      console.log(this.state.books);
+      // console.log(this.state.books);
     });
   }
 
