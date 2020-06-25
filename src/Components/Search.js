@@ -13,10 +13,10 @@ class Search extends Component {
 
   onchange = (value) => {
     this.setState({
-      query: value.trim(),
+      query: value,
     });
     if (value !== "") {
-      search(value.trim()).then((res) =>
+      search(value).then((res) =>
         this.setState({
           searchResult: res,
         })
