@@ -31,3 +31,6 @@ To get started developing right away:
     ├── index.css # Global styles. You probably won't need to change anything here.
     └── index.js # You should not need to modify this file. It is used for DOM rendering only.
 ```
+
+
+# The app is available at  https://my-reads-32e4c.web.app
