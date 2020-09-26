@@ -5,6 +5,7 @@ class Book extends Component {
     selectedValue: "",
   };
   onchange = (e, book) => {
+    console.log(e.target);
     const shelf = e.target.value;
     this.setState({ selectedValue: shelf });
     this.props.toUpdate(book, shelf);
